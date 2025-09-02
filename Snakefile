@@ -1,22 +1,9 @@
-# first to activate the snakemake environment in the terminal
-#  $ mamba activate snakemake
-
-# install Graphviz to view dag figure
-#  $ brew install graphviz
-#  $ snakemake --dag | dot -Tpng > dag.png    
-
-# permission to execute the perl scripts
-#  $ chmod +x perl/filter_bam_SA.pl
-#  $ chmod +x perl/mapq0_to_fastq.pl
-#  $ chmod +x perl/parse_bam_to_read_table.pl
-
-
 import os
 import pandas as pd
 import Bio
 
 
-configfile: "config_20241120Opti.yaml"
+configfile: "config.yaml"
 
 innerbc_sheet = pd.read_csv(config["innerbc_sheet"])  # Generate inner_bc names by reading the innerbc_96.csv
 INNER_BC = innerbc_sheet['barcodeRV_id'].tolist()  # Extract the list of inner bc
