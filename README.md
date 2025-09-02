@@ -3,21 +3,12 @@
 A computational pipeline for characterizing and quantifying the genomic integration outcomes following PCR tagging.
 
 ## Project structure
-data/           # Raw data (fastq.gz)
-inputs/         # Barcode information, metadata, reference genome (human ref genome -- hg38.ucsc.fa -- is not uploaded)
-envs/           # Conda and Julia environment specification
-julia/          # Julia scripts for demultiplexing and trimming
-R/              # R scripts
-python/         # Python scripts
-Snakefile       # Main Snakemake workflow file
-config.yml      # Configuration file for the pipeline
-README.md
+- [data/](#-data)         --> Raw data (fastq.gz)
+- [inputs/](#-inputs)     --> Barcode information, metadata, reference genome (human ref genome -- hg38.ucsc.fa -- is not uploaded)
+- [envs/](#-envs)         --> Conda and Julia environment specification
+- [julia/](#-julia)       --> Julia scripts for demultiplexing and trimming
+- [R/](#-R)               --> R scripts for statistics
+- [python](#-python)      --> Python scripts for mapping and filtering
+- [Snakefile](#-snakefile) --> Main Snakemake workflow file
+- [config.yml](#-config)   --> Configuration file for the pipeline
 
-
-- [data/](#-features)  # Raw data (fastq.gz)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
