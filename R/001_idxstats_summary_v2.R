@@ -1,4 +1,7 @@
-# compare with the previous version, here process two separate sets of inputs
+# Author: Dan Lou 
+# Heidelberg University, ZMBH, Knop Lab
+# 2025-09-02
+
 
 library(dplyr)
 
