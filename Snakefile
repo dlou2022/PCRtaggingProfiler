@@ -12,28 +12,6 @@ OUTDIR = config["output_dir"]
 LOGDIR = config["log_dir"]
 BARCODE = config["input_fastq"].keys()
 
-onstart:
-    print("##### Creating profile pipeline #####\n") 
-    print("\t Creating jobs output subfolders...\n")
-    shell("mkdir -p jobs/all")
-    shell("mkdir -p jobs/innerbc_demux_trim")
-    shell("mkdir -p jobs/dir_exist")
-    shell("mkdir -p jobs/indexgenome")
-    shell("mkdir -p jobs/bwa_mem_map")
-    shell("mkdir -p jobs/bwa_mem_map_offtar")
-    shell("mkdir -p jobs/sortbam")
-    shell("mkdir -p jobs/indexbam")
-    shell("mkdir -p jobs/filterMisassignedM1M1")
-    shell("mkdir -p jobs/filterMAPQ")
-    shell("mkdir -p jobs/filterHDRreads")
-    shell("mkdir -p jobs/generateMapStats")
-    shell("mkdir -p jobs/idxstats_summary")
-    shell("mkdir -p jobs/counts_events_summary")
-    shell("mkdir -p jobs/count_innerbc_reads")
-    shell("mkdir -p jobs/filterXAtoFASTQ")
-    shell("mkdir -p jobs/get_offtar_tsv")
-    shell("mkdir -p jobs/combine_tsv")
-
 
 #rule all:
 #    input:
@@ -48,17 +26,14 @@ rule all:
         OUTDIR + "/stats/" + "final_outcomes_meta.csv"
 
 
-
-#if already demuxed, skip##############################
 # pre-mapping --- demultiplexing and trimming
 rule innerbc_demux_trim:
     input:
-        innerbc_to_trim=config["innerbc_sheet"],    # for 96-well plate of inner barcodes, for demuxing DL's HDR/NHEJ data
+        innerbc_to_trim=config["innerbc_sheet"],    
         fastq=lambda wildcards: config["input_fastq"][wildcards.barcode],
         env="envs/trim_env"
     output:
-        directory(OUTDIR + "/seq/{barcode}")   # Declared as directory
-#        expand(OUTDIR + "/seq/{{barcode}}/{inner_barcode}.fastq.gz", inner_barcode = config["sample"]["{barcode}"].split(","))
+        directory(OUTDIR + "/seq/{barcode}")   
     log:
         LOGDIR + "/{barcode}.log"
     threads: 1
@@ -75,9 +50,6 @@ rule dir_exist:
     threads: 1
     shell:
         "mv "+ OUTDIR + "/seq/{wildcards.barcode}/{wildcards.inner_barcode}.fastq.gz {output}" 
-
-#if already demuxed, skip##############################
-
 
 
 #1 index reference genome 
@@ -101,8 +73,6 @@ rule bwa_mem_map:
         temp(OUTDIR + "/bwa/" + "{barcode}/" + "{innerbc}.raw.bam")
     log:
         LOGDIR + "/{barcode}_{innerbc}.log"
-#    conda:
-#        "environment.yaml"
     threads: 8
     shell:
         "(bwa mem -x ont2d -t {threads} {input.genome} {input.read}| "
@@ -145,10 +115,8 @@ rule combine_SA_M1M1:
 #3.2 index bam file
 rule indexbam:
     input:
-#        OUTDIR + "/bwa/" + "{barcode}/" + "{innerbc}.sorted.bam"
         "{sample}.bam"
     output:
-#        OUTDIR + "/bwa/" + "{barcode}/" + "{innerbc}.sorted.bam.bai"
         "{sample}.bam.bai"
     threads: 1
     shell:
