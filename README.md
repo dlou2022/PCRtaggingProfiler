@@ -12,3 +12,12 @@ python/         # Python scripts
 Snakefile       # Main Snakemake workflow file
 config.yml      # Configuration file for the pipeline
 README.md
+
+
+- [Features](#-features)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
