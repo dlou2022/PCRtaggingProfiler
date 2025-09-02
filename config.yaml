@@ -1,0 +1,21 @@
+batch_id: Anchorseq_001
+
+innerbc_sheet: 'inputs/innerbc.csv'
+
+
+input_fastq:
+    barcode00: data/barcode00/barcode00.fastq.gz
+
+sample:
+    barcode00: 
+
+
+ref_genome: 'inputs/fasta/ref_panel_Opti9tags.v5.fasta'
+
+offtar_ref_genome: 'inputs/fasta/hg38.ucsc.fa'
+
+output_dir: 'programmatic_outputs/001'
+
+log_dir: 'logs/001'
+
+metadata_sheet: 'inputs/sample_metadata_001.csv'
