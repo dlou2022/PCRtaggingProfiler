@@ -14,7 +14,7 @@ config.yml      # Configuration file for the pipeline
 README.md
 
 
-- [Features](#-features)
+- [data/](#-features)  # Raw data (fastq.gz)
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [Project Structure](#-project-structure)
