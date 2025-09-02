@@ -1,3 +1,10 @@
+# Author: Dan Lou, Shengdi Li 
+# Heidelberg University, ZMBH, Knop Lab
+# EMBL, Steinmetz Lab
+# 2025-09-02
+# Pipeline for mapping genome-wide integration outcomes following PCR tagging
+
+
 import os
 import pandas as pd
 import Bio
