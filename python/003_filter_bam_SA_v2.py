@@ -2,7 +2,7 @@
 ### Author: Dan Lou, Shengdi Li ###
 ### 2024.08.22 ###
 ######## check for SA:Z instead of the 15th column, since the 15th column is not necessarily always the "SA:Z"#########
-######## get exact the same output with Shengdi's "filter_bam_SA.pl"  ############
+
 
 import argparse
 import re
